@@ -1,0 +1,13 @@
+USE `expense_db`;
+
+CREATE TABLE `expense_transaction` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `date` Date NOT NULL,
+  `expense_transaction_name` varchar(25) NOT NULL,
+  `amount` int(25) NOT NULL,
+  `notes` varchar(255) default NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `items_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=500 DEFAULT CHARSET=latin1;
