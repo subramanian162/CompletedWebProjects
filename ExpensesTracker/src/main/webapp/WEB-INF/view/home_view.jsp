@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +25,8 @@ body {
 	font-family: Arial;
 	padding: 10px;
 	background: #f1f1f1;
-	background-image: url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/images_three.png")
+	background-image:
+		url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/images_three.png")
 }
 
 .header {
@@ -259,8 +263,8 @@ body {
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="${pageContext.request.contextPath}/incomeCategory">Income</a> <a
-					href="${pageContext.request.contextPath}/expenseCategory">Expense</a>
+				<a href="${pageContext.request.contextPath}/incomeCategory">Income</a>
+				<a href="${pageContext.request.contextPath}/expenseCategory">Expense</a>
 			</div>
 		</div>
 		<div class="dropdown">
@@ -272,9 +276,26 @@ body {
 					href="${pageContext.request.contextPath}/expense">Expense</a>
 			</div>
 		</div>
-		<a href="${pageContext.request.contextPath}/signup">SignUp</a> <a
-			href="${pageContext.request.contextPath}/login">Login</a> <a href="javascript:void(0);"
-			style="font-size: 15px;" class="icon" onclick="myFunction()">&#9776;</a>
+
+
+		<c:if test="${pageContext.request.userPrincipal.name == null}">
+			<a href="${pageContext.request.contextPath}/signup">SignUp</a>
+			<a href="${pageContext.request.contextPath}/login">Login</a>
+		</c:if>
+
+		<c:if test="${pageContext.request.userPrincipal.name != null}">
+			<form:form name="submitForm" method="POST"
+				action="${pageContext.request.contextPath}/logout">
+				<input type="hidden" name="param1" value="param1Value">
+				<A HREF="javascript:document.submitForm.submit()">Logout</A>
+			</form:form>
+
+		</c:if>
+
+		<a href="javascript:void(0);" style="font-size: 15px;" class="icon"
+			onclick="myFunction()">&#9776;</a>
+
+
 	</div>
 
 	<div class="row">
@@ -327,7 +348,7 @@ body {
 			</div>
 		</div>
 	</div>
-  
+
 	<div class="footer">
 		<h3>Contacts</h3>
 		<i class="glyphicon glyphicon-envelope"> subu2code@gmail.com</i>

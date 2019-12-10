@@ -18,14 +18,6 @@
 	box-sizing: border-box;
 }
 
-body {
-	font-family: Arial;
-	padding: 10px;
-	margin: 0;
-	background-image:
-		url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/image_eleven.png");
-}
-
 .header {
 	padding: 10px;
 	height: 230px;
@@ -179,17 +171,15 @@ body {
 	height: 70%;
 	text-align: center;
 	height: 70%;
-	background-image:
-		url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/image_ten.png");
+	background-color: white;
 }
-</style>
-<style>
+
 body {
 	font-family: Arial;
 	padding: 10px;
-	margin: 0;
+	margin: 5px;
 	background-image:
-		url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/image_eleven.png");
+		url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/images.png");
 }
 
 .income_div {
@@ -197,18 +187,24 @@ body {
 	margin-left: 10px;
 	margin-right: 10px;
 	background-image:
-		url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/images_three.png");
+		url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/image_twelve.jpg");
 	height: 100%;
 	width: 100%;
+	border-radius: 80px;
 	padding: 20px;
 }
 
 hr {
-	border-top: none;
+	border-color: black;
+	color: black;
 }
 
 .td {
-	color: white;
+	color: #da2d2d;
+}
+
+.tf {
+	color: #333;
 }
 </style>
 
@@ -254,7 +250,7 @@ hr {
 			onclick="myFunction()">&#9776;</a>
 	</div>
 
-	<center>
+	<center style="margin: 60px">
 		<h1>Monthly Expenses Report</h1>
 	</center>
 
@@ -266,7 +262,7 @@ hr {
 						<h3>Income:</h3>
 					</td>
 					<td>
-						<p style="color: #dff6f0;">${report.income}</p>
+						<p style="color: #00ff00;">+${report.income}</p>
 					</td>
 				</tr>
 				<tr>
@@ -278,9 +274,10 @@ hr {
 							</tr>
 							<c:forEach var="incomeCat" items="${report.incomeTransactions}">
 								<tr>
-									<td class="td"><c:out
+									<td class="tf"><c:out
 											value="${incomeCat.incomeTransactionName}" /></td>
-									<td class="td"><c:out value="${incomeCat.amount}" /></td>
+									<td style="color: #00ff00"><c:out
+											value="+${incomeCat.amount}" /></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -291,7 +288,7 @@ hr {
 						<h3>Expenses:</h3>
 					</td>
 					<td>
-						<p class="td">${report.expense}</p>
+						<p class="td">-${report.expense}</p>
 					</td>
 				</tr>
 				<tr>
@@ -303,9 +300,9 @@ hr {
 							</tr>
 							<c:forEach var="expenseCat" items="${report.expenseTransactions}">
 								<tr>
-									<td class="td"><c:out
+									<td class="tf"><c:out
 											value="${expenseCat.expenseTransactionName}" /></td>
-									<td class="td"><c:out value="${expenseCat.amount}" /></td>
+									<td class="td"><c:out value="-${expenseCat.amount}" /></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -317,7 +314,12 @@ hr {
 				</tr>
 				<tr>
 					<td><h3>Total Balance:</h3></td>
-					<td class="td">${report.balance}</td>
+					<td><c:if test="${report.balance < 0}">
+					 <p style="color: #da2d2d">${report.balance}</p>
+					</c:if>
+					<c:if test="${report.balance > 0}">
+					 <p style="color: #00ff00">+${report.balance}</p>
+					</c:if></td>
 				</tr>
 				<tr>
 					<td><hr></td>
@@ -325,6 +327,7 @@ hr {
 				</tr>
 			</table>
 		</center>
+
 	</div>
 
 

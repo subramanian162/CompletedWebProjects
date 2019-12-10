@@ -170,12 +170,13 @@ body {
 
 .centreBox {
 	padding: 45px;
+	border-radius:20px;
 	width: 100%;
 	margin-top: 100px;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px; text-align : center;
-	height: 70%;
+	height: 80%;
 	text-align: center; height : 70%;
 	background-image: url("file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/image_ten.png");
 }
@@ -222,9 +223,11 @@ body {
 	</div>
 
 	<div class="centreBox">
-		<table cellspacing="10px">
-			<tr>
-				<td><form:form
+	
+				
+			<i style="color: white;">Select the Month and Year. <br><br> For which You want to see your Expenses Details.</i>
+			<br><br>  
+				 <form:form
 						action="${pageContext.request.contextPath}/showSpend"
 						>
 						<div>
@@ -253,21 +256,8 @@ body {
 						<div>
 							<button class="button1">Show</button>
 						</div>
-					</form:form></td>
-
-				<td>
-				 <img alt="graph" src="file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/image_thirteen.jpg" height="300px" width="400px">
-			    </td>
-			    <td>
-			     <div>
-			      <i style="color: white;">Select the Month and Year. <br><br> For which You want to see your Expenses Details.</i> 
-			       <br><br>
-			       <img alt="image" height="200px" width="200px" src="file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/image_forteen.jpg">
-			       <img alt="image 2"  height="200px" width="200px" src="file:///C:/Users/802359/workspace/ExpensesTracker/src/main/resources/image/image_nine.jpg">
-			     </div>
-			    </td>
-			</tr>
-		</table>
+					</form:form>
+			
 	</div>
 	<div class="footer">
 		<h3>Contacts</h3>
